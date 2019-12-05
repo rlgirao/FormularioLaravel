@@ -14,7 +14,8 @@ class refrigeranteController extends Controller
      */
     public function index()
     {
-        //
+        $refrigerante = refrigerante::all();
+        dd($refrigerante);
     }
 
     /**
@@ -24,14 +25,15 @@ class refrigeranteController extends Controller
      */
     public function create()
     {
-        $produtos = new produtos;
-        $produtos->marca='Coca-Cola';
-        $produtos->tipo='Pet';
-        $produtos->sabor='Cola';
-        $produtos->litragem='1L';
-        $produtos->valor='8.00';
-        $produtos->quantidade='20';
-        $produtos->save();
+        refrigerante::create([
+            'marca'=>'Antartica',
+            'tipo'=>'Lata',
+            'sabor'=>'Guarana',
+            'litragem'=>'1L',
+            'valor'=>6.00,
+            'quantidade'=>10
+        ]);
+
         return 'Dados Salvos';
     }
 
@@ -54,7 +56,9 @@ class refrigeranteController extends Controller
      */
     public function show($id)
     {
-        //
+        $refrigerante = refrigerante::find($id);
+        $refrigerante->delete();
+        return 'Item apagado com sucesso';
     }
 
     /**
@@ -65,7 +69,11 @@ class refrigeranteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $refrigerante = refrigerante::find($id);
+        //$refrigerante = refrigerante::where('id', $id)->first();
+        $refrigerante->marca = 'Antartica';
+        $refrigerante->save();
+        return 'Atualizado com sucesso';
     }
 
     /**

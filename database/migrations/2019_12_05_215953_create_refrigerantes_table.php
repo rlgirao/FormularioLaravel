@@ -21,6 +21,7 @@ class CreateRefrigerantesTable extends Migration
             $table->enum('litragem', ['250mL', '600mL', '1L']);
             $table->float('valor', 10, 2);
             $table->integer('quantidade');
+            $table->timestamps();
         });
     }
 
