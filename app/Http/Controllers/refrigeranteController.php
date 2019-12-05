@@ -15,7 +15,8 @@ class refrigeranteController extends Controller
     public function index()
     {
         $refrigerante = refrigerante::all();
-        dd($refrigerante);
+        //dd($refrigerante);
+        return view('index')->with('refrigerante', $refrigerante);
     }
 
     /**
