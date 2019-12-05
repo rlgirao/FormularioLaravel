@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\refrigerante;
 
-class produtosController extends Controller
+class refrigeranteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +24,15 @@ class produtosController extends Controller
      */
     public function create()
     {
-        //
+        $produtos = new produtos;
+        $produtos->marca='Coca-Cola';
+        $produtos->tipo='Pet';
+        $produtos->sabor='Cola';
+        $produtos->litragem='1L';
+        $produtos->valor='8.00';
+        $produtos->quantidade='20';
+        $produtos->save();
+        return 'Dados Salvos';
     }
 
     /**
