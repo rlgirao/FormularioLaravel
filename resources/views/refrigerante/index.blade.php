@@ -59,7 +59,7 @@
                         <th scope="col">Litragem</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Quantidade</th>
-                        <th scope="col">Funções</th>
+                        <th scope="col"></th>
 
                       </tr>
                     </thead>
@@ -73,9 +73,9 @@
                         <td>@mdo</td>
                         <td>
                           
-                          <a class="btn btn-primary" href="{{ route('refrigerantes.create') }}">Novo</a>
+                          <a class="btn btn-primary" href="{{ route('refrigerantes.create') }}">Editar</a>
                           
-                          <button class="btn btn-danger" type="submit">deletar</button>
+                          <button class="btn btn-danger" type="submit">Deletar</button>
                         </td>
                       </tr>
                     </tbody>
