@@ -46,7 +46,15 @@ class refrigeranteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        refrigerante::create([
+            'marca'=> $request->marca,
+            'tipo'=>$request->tipo,
+            'sabor'=>$request->sabor,
+            'litragem'=>$request->litragem,
+            'valor'=>$request->valor,
+            'quantidade'=>$request->quantidade
+        ]);
+        return redirect()->route('refrigerantes.index')->with('salvo','Refrigerante salvo com Sucesso!');
     }
 
     /**

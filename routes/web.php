@@ -20,3 +20,7 @@ Route::resource('refrigerantes', 'refrigeranteController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/cancelar', function(){
+    return redirect()->route('refrigerantes.index')->with('cancelar','Ação cancelada!');
+})->name('cancelar');

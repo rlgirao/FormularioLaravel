@@ -69,7 +69,7 @@
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn btn-danger">Cancelar</button>
+                                <a class="btn btn-danger" href="{{ route('refrigerantes.index') }}">Cancelar</a>
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
