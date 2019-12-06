@@ -7,21 +7,13 @@ use App\refrigerante;
 
 class refrigeranteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view('refrigerante.index');
+        $refrigerante = refrigerante::all();
+        return view('refrigerante.index', compact('refrigerante'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //refrigerante::create([
@@ -38,12 +30,6 @@ class refrigeranteController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         refrigerante::create([
@@ -57,12 +43,6 @@ class refrigeranteController extends Controller
         return redirect()->route('refrigerantes.index')->with('salvo','Refrigerante salvo com Sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //$refrigerante = refrigerante::find($id);
@@ -71,42 +51,25 @@ class refrigeranteController extends Controller
         return view('refrigerante.show', compact('id'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //$refrigerante = refrigerante::find($id);
-        //$refrigerante = refrigerante::where('id', $id)->first();
-        //$refrigerante->marca = 'Antartica';
-        //$refrigerante->save();
-        //return 'Atualizado com sucesso';
-        return view('refrigerante.edit', compact('id'));
+        $refrigerante = refrigerante::findOrFail($id);
+        return view('refrigerante.edit', compact('editar'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        
+    }
+
+    public function confirm($id)
+    {
+        $refrigerante = refrigerante::findOrFail($id);
+        return view('refrigerante.confirm', compact('refrigerante'));
     }
 }

@@ -24,3 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cancelar', function(){
     return redirect()->route('refrigerantes.index')->with('cancelar','Ação cancelada!');
 })->name('cancelar');
+
+Route::get('/refrigerante/{id}/confirm','refrigeranteController@confirm')->name('refrigerante.confirm');

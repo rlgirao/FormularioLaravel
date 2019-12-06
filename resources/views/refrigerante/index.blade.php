@@ -53,6 +53,7 @@
                   <table class="table">
                     <thead class="thead-dark">
                       <tr>
+                        <th scope="col"><input type="checkbox" id="scales" name="id"></th>
                         <th scope="col" >Marca</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Sabor</th>
@@ -64,20 +65,31 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($refrigerante as $refrigerantes)
                       <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td><input type="checkbox" id="scales" name="id"></td>
+                        <td>{{ $refrigerantes->marca }}</td>
+                        <td>{{ $refrigerantes->tipo }}</td>
+                        <td>{{ $refrigerantes->sabor }}</td>
+                        <td>{{ $refrigerantes->litragem }}</td>
+                        <td>{{ $refrigerantes->valor }}</td>
+                        <td>{{ $refrigerantes->quantidade }}</td>
                         <td>
-                          
-                          <a class="btn btn-primary" href="{{ route('refrigerantes.create') }}">Editar</a>
-                          
-                          <button class="btn btn-danger" type="submit">Deletar</button>
+                          <div class="form-group">
+                            <div class="row">
+                              <div class=col-ms-6>
+                                <a class="btn btn-success" href="{{ route('refrigerantes.create') }}">
+                                <i class="fas fa-edit"></i>
+                                </a>
+                              </div>
+                              <div class="col-ms-6">
+                                <a class="btn btn-danger" href="{{ route('refrigerantes.create') }}">D</a>
+                              </div>
+                            </div>
+                          </div>
                         </td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
 
