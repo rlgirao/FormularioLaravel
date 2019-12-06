@@ -1,38 +1,62 @@
-@extends('layouts.modelo')
-
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+              <div class="card-header">{{ __('Lista de Refrigerantes') }}</div>
+                <br>
+                <form class="form-group">
+                  <div class="row">
+                    <div class="col-sm-8 offset-sm-1">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Buscar">
+                    </div>
+                    <div class="col-sm-1">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </div>
+                    <div class="col-sm-1">
+                      <a class="btn btn-primary" href="{{ route('refrigerantes.create') }}">Novo</a>
+                    </div>
+                  </div>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col"><input type="checkbox" class="checkthis" /></th>
-      <th scope="col">Marca</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Sabor</th>
-      <th scope="col">Litragem</th>
-      <th scope="col">Valor R$</th>
-      <th scope="col">Quantidade</th>
-      <th scope="col">Editar</th>
-      <th scope="col">Deletar</th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach ($refrigerante as $refrigerantes)
-        <tr>
-            <td><input type="checkbox" class="checkthis" /></td>
-            <td>{{ $refrigerantes->marca }}</td>
-            <td>{{ $refrigerantes->tipo }}</td>
-            <td>{{ $refrigerantes->sabor }}</td>
-            <td>{{ $refrigerantes->litragem }}</td>
-            <td>{{ $refrigerantes->valor }}</td>
-            <td>{{ $refrigerantes->quantidade }}</td>
-            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-        </tr>
-  </tbody>
-</table>
+                  <br>
 
+                  <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" >Marca</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Sabor</th>
+                        <th scope="col">Litragem</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Funções</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>
+                          
+                          <a class="btn btn-primary" href="{{ route('refrigerantes.create') }}">Novo</a>
+                          
+                          <button class="btn btn-danger" type="submit">deletar</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </form>  
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
-
-@section('titulo','Inicio')

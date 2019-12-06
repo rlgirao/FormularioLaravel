@@ -14,10 +14,7 @@ class refrigeranteController extends Controller
      */
     public function index()
     {
-        $refrigerante = refrigerante::all();
-        //dd($refrigerante);
-        //return view('refrigerante.index', compact('refrigerante'));
-        return view('refrigerante.index')->with('refrigerante', $refrigerante);
+        return view('refrigerante.index');
     }
 
     /**
