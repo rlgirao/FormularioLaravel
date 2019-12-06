@@ -16,7 +16,7 @@ class refrigeranteController extends Controller
     {
         $refrigerante = refrigerante::all();
         //dd($refrigerante);
-        return view('index')->with('refrigerante', $refrigerante);
+        return view('refrigerante.index', compact('refrigerante'));
     }
 
     /**
@@ -26,16 +26,18 @@ class refrigeranteController extends Controller
      */
     public function create()
     {
-        refrigerante::create([
-            'marca'=>'Antartica',
-            'tipo'=>'Lata',
-            'sabor'=>'Guarana',
-            'litragem'=>'1L',
-            'valor'=>6.00,
-            'quantidade'=>10
-        ]);
+        //refrigerante::create([
+        //    'marca'=>'Antartica',
+        //    'tipo'=>'Lata',
+        //    'sabor'=>'Guarana',
+        //    'litragem'=>'1L',
+        //    'valor'=>6.00,
+        //    'quantidade'=>10
+        //]);
+//
+        //return 'Dados Salvos';
+        return view('refrigerante.create');
 
-        return 'Dados Salvos';
     }
 
     /**
@@ -57,9 +59,10 @@ class refrigeranteController extends Controller
      */
     public function show($id)
     {
-        $refrigerante = refrigerante::find($id);
-        $refrigerante->delete();
-        return 'Item apagado com sucesso';
+        //$refrigerante = refrigerante::find($id);
+        //$refrigerante->delete();
+        //return 'Item apagado com sucesso';
+        return view('refrigerante.show', compact('id'));
     }
 
     /**
@@ -70,11 +73,12 @@ class refrigeranteController extends Controller
      */
     public function edit($id)
     {
-        $refrigerante = refrigerante::find($id);
+        //$refrigerante = refrigerante::find($id);
         //$refrigerante = refrigerante::where('id', $id)->first();
-        $refrigerante->marca = 'Antartica';
-        $refrigerante->save();
-        return 'Atualizado com sucesso';
+        //$refrigerante->marca = 'Antartica';
+        //$refrigerante->save();
+        //return 'Atualizado com sucesso';
+        return view('refrigerante.edit', compact('id'));
     }
 
     /**
