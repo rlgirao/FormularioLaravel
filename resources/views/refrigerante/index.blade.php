@@ -34,6 +34,7 @@
                         <th scope="col">Valor</th>
                         <th scope="col">Quantidade</th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
 
                       </tr>
                     </thead>
@@ -48,18 +49,15 @@
                         <td>{{ $refrigerantes->valor }}</td>
                         <td>{{ $refrigerantes->quantidade }}</td>
                         <td>
-                          <div class="form-group">
-                            <div class="row">
-                              <div class=col-ms-6>
-                                <a class="btn btn-success" href="{{ route('refrigerantes.create') }}">
-                                <i class="fas fa-edit"></i>
-                                </a>
-                              </div>
-                              <div class="col-ms-6">
-                                <a class="btn btn-danger" href="{{ route('refrigerantes.create') }}">D</a>
-                              </div>
-                            </div>
-                          </div>
+                          <a class="btn btn-success" href="{{ route('refrigerantes.create') }}">
+                            <i class="far fa-edit"></i>
+                          </a>
+                        </td>
+                        <td>
+                          @method('DELETE')
+                          <a class="btn btn-danger" href="{{ route('refrigerantes.create') }}">
+                            <i class="fas fa-trash"></i>
+                          </a>
                         </td>
                       </tr>
                       @endforeach

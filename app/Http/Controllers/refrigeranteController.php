@@ -18,6 +18,9 @@ class refrigeranteController extends Controller
         if(session('info_mesage')){
             Alert::info('Ação', session('info_mesage'));
         }
+        if(session('danger_mesage')){
+            Alert::danger('Refrigerante', session('danger_mesage'));
+        }
         
         return view('refrigerante.index', compact('refrigerante'));
     }
@@ -72,12 +75,10 @@ class refrigeranteController extends Controller
 
     public function destroy($id)
     {
-        
+        $refrigerante = refrigerante::findOrFail($id);
+        $refrigerante->delete();
+        return redirect()->route('refrigerantes.index')->withDangerMesage('Deletado com sucesso!');
+
     }
 
-    public function confirm($id)
-    {
-        $refrigerante = refrigerante::findOrFail($id);
-        return view('refrigerante.confirm', compact('refrigerante'));
-    }
 }
