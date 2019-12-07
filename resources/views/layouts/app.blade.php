@@ -95,6 +95,8 @@
         </nav>
 
         <main class="py-4">
+            <?php // Inclusão sweetalert?>
+            @include('sweetalert::alert')
             @yield('content')
         </main>
     </div>

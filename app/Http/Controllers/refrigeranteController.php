@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\refrigerante;
+Use Alert;
 
 class refrigeranteController extends Controller
 {
@@ -11,6 +12,13 @@ class refrigeranteController extends Controller
     public function index()
     {
         $refrigerante = refrigerante::all();
+        if(session('success_mesage')){
+            Alert::success('Refrigerante ', session('success_mesage'));
+        }
+        if(session('info_mesage')){
+            Alert::info('Ação', session('info_mesage'));
+        }
+        
         return view('refrigerante.index', compact('refrigerante'));
     }
 
@@ -40,7 +48,7 @@ class refrigeranteController extends Controller
             'valor'=>$request->valor,
             'quantidade'=>$request->quantidade
         ]);
-        return redirect()->route('refrigerantes.index')->with('salvo','Refrigerante salvo com Sucesso!');
+        return redirect()->route('refrigerantes.index')->withSuccessMesage('Cadastrado com sucesso!');
     }
 
     public function show($id)
