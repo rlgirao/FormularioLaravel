@@ -41,7 +41,7 @@
                     <tbody>
                       @foreach ($refrigerante as $refrigerantes)
                       <tr>
-                        <td><input type="checkbox" id="scales" name="id"></td>
+                        <td><input type="checkbox" id="scales" name="checkbox"></td>
                         <td>{{ $refrigerantes->marca }}</td>
                         <td>{{ $refrigerantes->tipo }}</td>
                         <td>{{ $refrigerantes->sabor }}</td>
@@ -55,16 +55,37 @@
                         </td>
                         <td>
                           @method('DELETE')
-                          <a class="btn btn-danger" href="{{ route('refrigerantes.create') }}">
+                          <button class="btn btn-danger" onclink="deletar({{ $refrigerantes->id }})">
                             <i class="fas fa-trash"></i>
-                          </a>
+                          </button>
+                          <script>
+                            function deletar(id){
+                              swal({
+                                title: "Deletar Refrigerante",
+                                text: "Tem certeza?",
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                              })
+                              .then((willDelete) => {
+                                if (willDelete) {
+                                  {{route('refrigerantes.destroy', $refrigerantes->id)}}
+                                  swal("Refrigerante deletado com sucesso!", {
+                                    icon: "success",
+                                  });
+                                } else {
+                                  swal("Ação Cancelada!");
+                                }
+                              });
+                              }
+                          </script>
                         </td>
                       </tr>
                       @endforeach
                     </tbody>
                   </table>
 
-                </form>  
+                </form> 
               </div>
             </div>
         </div>

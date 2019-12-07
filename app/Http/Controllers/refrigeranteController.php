@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\refrigerante;
 Use Alert;
 
+
 class refrigeranteController extends Controller
 {
 
@@ -77,8 +78,9 @@ class refrigeranteController extends Controller
     {
         $refrigerante = refrigerante::findOrFail($id);
         $refrigerante->delete();
-        return redirect()->route('refrigerantes.index')->withDangerMesage('Deletado com sucesso!');
+        //return redirect()->route('refrigerantes.index')->withDangerMesage('Deletado com sucesso!');
 
     }
+
 
 }
