@@ -4,98 +4,81 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\refrigerante;
+Use Alert;
 
 class refrigeranteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $refrigerante = refrigerante::all();
-        dd($refrigerante);
+        if(session('success_mesage')){
+            Alert::success('Refrigerante ', session('success_mesage'));
+        }
+        if(session('info_mesage')){
+            Alert::info('Ação', session('info_mesage'));
+        }
+        if(session('danger_mesage')){
+            Alert::danger('Refrigerante', session('danger_mesage'));
+        }
+        
+        return view('refrigerante.index', compact('refrigerante'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        refrigerante::create([
-            'marca'=>'Antartica',
-            'tipo'=>'Lata',
-            'sabor'=>'Guarana',
-            'litragem'=>'1L',
-            'valor'=>6.00,
-            'quantidade'=>10
-        ]);
+        //refrigerante::create([
+        //    'marca'=>'Antartica',
+        //    'tipo'=>'Lata',
+        //    'sabor'=>'Guarana',
+        //    'litragem'=>'1L',
+        //    'valor'=>6.00,
+        //    'quantidade'=>10
+        //]);
+//
+        //return 'Dados Salvos';
+        return view('refrigerante.create');
 
-        return 'Dados Salvos';
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        refrigerante::create([
+            'marca'=> $request->marca,
+            'tipo'=>$request->tipo,
+            'sabor'=>$request->sabor,
+            'litragem'=>$request->litragem,
+            'valor'=>$request->valor,
+            'quantidade'=>$request->quantidade
+        ]);
+        return redirect()->route('refrigerantes.index')->withSuccessMesage('Cadastrado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $refrigerante = refrigerante::find($id);
-        $refrigerante->delete();
-        return 'Item apagado com sucesso';
+        //$refrigerante = refrigerante::find($id);
+        //$refrigerante->delete();
+        //return 'Item apagado com sucesso';
+        return view('refrigerante.show', compact('id'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        $refrigerante = refrigerante::find($id);
-        //$refrigerante = refrigerante::where('id', $id)->first();
-        $refrigerante->marca = 'Antartica';
-        $refrigerante->save();
-        return 'Atualizado com sucesso';
+        $refrigerante = refrigerante::findOrFail($id);
+        return view('refrigerante.edit', compact('editar'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $refrigerante = refrigerante::findOrFail($id);
+        $refrigerante->delete();
+        return redirect()->route('refrigerantes.index')->withDangerMesage('Deletado com sucesso!');
+
     }
+
 }
