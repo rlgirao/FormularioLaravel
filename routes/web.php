@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('refrigerantes', 'refrigeranteController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/cancelar', function(){
+    return redirect()->route('refrigerantes.index')->withInfoMesage('Cancelada!');
+})->name('cancelar');
+
+Route::get('/refrigerante/{id}/confirm','refrigeranteController@confirm')->name('refrigerantes.confirm');
